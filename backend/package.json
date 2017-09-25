@@ -1,0 +1,22 @@
+{
+  "name": "kinolab-backend",
+  "version": "1.0.0",
+  "description": "Kinolab back end API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "./node_modules/nodemon/bin/nodemon.js -L app.js"
+  },
+  "author": "Pavlo Kuziv",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.5",
+    "mongoose": "^4.11.13",
+    "nodemon": "^1.12.1"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.5.3"
+  }
+}
