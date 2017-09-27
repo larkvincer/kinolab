@@ -1,0 +1,15 @@
+.MoviePlaceholder {
+  padding: 5px;
+  border: 1px solid #333;
+  width: 150px;
+  margin: 10px;
+  overflow: hidden;
+  float: left;
+}
+
+.MoviePlaceholder__title {
+  display: block;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+}
