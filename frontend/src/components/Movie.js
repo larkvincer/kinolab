@@ -38,15 +38,16 @@ export default class Movie extends Component {
     }
     const movie = this.state.movie;
     if(movie) {
+      let uniqueId = 0;
       return (
-        <article>
+        <article key={movie._id}>
           <button onClick={() => {this.handleDelete()}}>Delete</button>
           <img src="http://via.placeholder.com/300x500" alt={movie.title} />
           <h2>{movie.title}</h2>
           <div><strong>Realease year:</strong> {movie.release_year}</div>
           <div><strong>Format:</strong> {movie.format}</div>
           <div><strong>Actors:</strong> {
-            movie.actors.map(actor => (<span>{actor} </span>))
+            movie.actors.map(actor => (<span key={uniqueId++}>{actor} </span>))
           }</div>
         </article>
       );
