@@ -12,6 +12,6 @@ movieRouter.get("/actor/:actor", movieController.getMovieByActor);
 
 movieRouter.post("/", movieController.addMovie);
 
-movieRouter.delete("/", movieController.deleteMovieById);
+movieRouter.delete("/:id", movieController.deleteMovieById);
 
 module.exports = movieRouter;

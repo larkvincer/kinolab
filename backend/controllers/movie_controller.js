@@ -30,7 +30,7 @@ exports.addMovie = (req, resp) => {
 
 exports.deleteMovieById = (req, resp) => {
   console.log(req.body);
-  Movie.findOneAndRemove({_id: req.body._id},
+  Movie.findOneAndRemove({_id: req.params.id},
   (err) => {
     if (err) {
       resp.statusCode = 500;
