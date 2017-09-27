@@ -4,12 +4,13 @@
   "description": "Kinolab back end API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/mocha/bin/mocha --watch --recursive test",
     "dev": "./node_modules/nodemon/bin/nodemon.js -L app.js"
   },
   "author": "Pavlo Kuziv",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "express": "^4.15.5",
     "mongoose": "^4.11.13",
     "nodemon": "^1.12.1"
