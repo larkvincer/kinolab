@@ -5,7 +5,8 @@ import AddMovie from './components/AddMovie';
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  Link,
+  Switch
 } from 'react-router-dom'
 
 class App extends Component {
@@ -13,8 +14,12 @@ class App extends Component {
     return (
       <Router>
         <div>
-        <Header />
-        <Route path="/addmovie" component={AddMovie}/>
+          <Header />
+          <Switch>
+            <Route path="/movie/add" component={AddMovie}/>
+            <Route path="/" component={MainPage} />
+            <Route render={ () => (<div>Not found!!!</div>)} />
+          </Switch>
         </div>
       </Router>
     );

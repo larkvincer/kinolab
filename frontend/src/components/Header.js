@@ -9,7 +9,7 @@ export default class Header extends Component {
         <Link to="/">
           <h1>Kinolab</h1>
         </Link>
-        <Link to="/addmovie">
+        <Link to="/movie/add">
           <button>Add movie</button>
         </Link>
         <hr/>
