@@ -4,6 +4,10 @@ const express = require("express"),
 
 movieRouter.get("/", movieController.listMovies);
 
+movieRouter.get("/title/:title", movieController.getMovieByTitle);
+
+movieRouter.get("/actor/:actor", movieController.getMovieByActor);
+
 movieRouter.post("/", movieController.addMovie);
 
 movieRouter.delete("/", movieController.deleteMovieById);

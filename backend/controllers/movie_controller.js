@@ -4,13 +4,14 @@ const mongoose = require("mongoose"),
 exports.listMovies = (req, resp) => {
   Movie.find({}, (error, movies) => {
     if (error) {
-      resp.send(err);
+      resp.send(error);
     }
     resp.json(movies);
   });
 };
 
 exports.addMovie = (req, resp) => {
+  console.log(req.body);
   const newMovie = new Movie(req.body);
   newMovie.save((err) => {
     if (err) {
@@ -28,7 +29,8 @@ exports.addMovie = (req, resp) => {
 };
 
 exports.deleteMovieById = (req, resp) => {
-  Movie.findOneAndRemove({_id: req._id},
+  console.log(req.body);
+  Movie.findOneAndRemove({_id: req.body._id},
   (err) => {
     if (err) {
       resp.statusCode = 500;
@@ -44,13 +46,21 @@ exports.deleteMovieById = (req, resp) => {
 }
 
 exports.getMovieByTitle = (req, resp) => {
-  Movie.find({title: req.movieTitle}, (error, movie) => {
+  Movie.find({title: new RegExp(req.params.title, "i")},
+  (error, movies) => {
     if (error) {
       resp.send(error);
     }
-    resp.json(movie);
+    resp.json(movies);
   });
 };
 
-exports.getMovieByActorName = (req, resp) => {
+exports.getMovieByActor = (req, resp) => {
+  Movie.find({actors: new RegExp(req.params.actor, "i")},
+  (error, movies) => {
+    if (error) {
+      resp.send(error);
+    }
+    resp.json(movies);
+  })
 };
