@@ -4,14 +4,8 @@ const express = require("express"),
 
 movieRouter.get("/", movieController.listMovies);
 
-movieRouter.post("/", movieController.listMovies);
+movieRouter.post("/", movieController.addMovie);
 
-movieRouter.get("/:id", (req, resp) => {
-
-});
-
-movieRouter.patch("/:id", (req, resp) => {
-
-});
+movieRouter.delete("/", movieController.deleteById);
 
 module.exports = movieRouter;

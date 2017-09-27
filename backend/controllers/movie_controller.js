@@ -10,6 +10,18 @@ exports.listMovies = (req, resp) => {
   });
 };
 
+exports.addMovie = (req, resp) => {
+  const newMovie = new Movie(req.body);
+  newMovie.save((err) => {
+    if (err) {
+      resp.statusCode = 500;
+      return resp.json({
+        error: err.message
+      });
+    }
+  });
+};
+
 exports.getMovieByTitle = (req, resp) => {
   Movie.find({title: req.movieTitle}, (error, movie) => {
     if (error) {
