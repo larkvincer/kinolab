@@ -64,3 +64,13 @@ exports.getMovieByActor = (req, resp) => {
     resp.json(movies);
   })
 };
+
+exports.getMovieById = (req, resp) => {
+  Movie.find({_id: req.params.id},
+  (error, movie) => {
+    if (error) {
+      resp.send(error);
+    }
+    resp.json(movie);
+  })
+};
