@@ -19,8 +19,29 @@ exports.addMovie = (req, resp) => {
         error: err.message
       });
     }
+    resp.statusCode = 200;
+    resp.json({
+      message: "Movie saved",
+      movie: req.body
+    });
   });
 };
+
+exports.deleteMovieById = (req, resp) => {
+  Movie.findOneAndRemove({_id: req._id},
+  (err) => {
+    if (err) {
+      resp.statusCode = 500;
+      return resp.json({
+        error: err.message
+      });
+    }
+    resp.statusCode = 200;
+    resp.json({
+      message: "Movie successfuly deleted"
+    });
+  });
+}
 
 exports.getMovieByTitle = (req, resp) => {
   Movie.find({title: req.movieTitle}, (error, movie) => {
