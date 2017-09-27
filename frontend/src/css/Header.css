@@ -1,0 +1,13 @@
+.Header {
+  background-color: black;
+}
+
+.Header__logo {
+  color: white;
+  margin: 0;
+  text-decoration: none;
+}
+
+.margin_zero {
+  margin: 0!important;
+}
