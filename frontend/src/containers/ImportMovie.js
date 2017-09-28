@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import ImportMovieForm from "../components/ImportMovieForm";
 
 export default class ImportMovie extends Component {
   constructor() {
@@ -15,14 +16,22 @@ export default class ImportMovie extends Component {
       reader.readAsText(this.state.file);
       reader.onload = (event) => {
         const jsonFile = parseMovies(event.target.result);
-        jsonFile.map(el => {
-          fetch("http://localhost:8080/movie", {
-            method: 'post',
-            headers: {
-              "Content-type": "application/json"
-            },
-            body: JSON.stringify(el)
+        Promise.all(
+          jsonFile.map(el => {
+            fetch("http://localhost:8080/movie", {
+              method: 'post',
+              headers: {
+                "Content-type": "application/json"
+              },
+              body: JSON.stringify(el)
+            });
+          })
+        ).then(() => {
+          this.setState({
+            redirect: true
           });
+        }).catch(() => {
+          alert("Can't import movies!");
         });
       }
       reader.onerror = (event) => {
@@ -43,14 +52,10 @@ export default class ImportMovie extends Component {
 
   render() {
     return (
-      <form onSubmit={event => {this.handleSubmit(event)}}>
-        Select file:
-        <input type="file" except=".txt"
-          required="true" name="file"
-          onChange={event => {this.handleChange(event)}}
-        /><br/>
-        <input type="submit" value="Import"/>
-      </form>
+      <ImportMovieForm
+        onFormSubmit={(event) => {this.handleSubmit(event)}}
+        onInputChange={(event) => {this.handleChange(event)}}
+      />
     );
   }
 }
