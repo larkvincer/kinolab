@@ -27,13 +27,18 @@ export default class AddMovie extends Component {
       body: JSON.stringify(data)
     })
     .then((response) => {
-      alert(response.message);
-      this.setState({
-        redirect: true
-      });
+      console.log(response);
+      if (response.statusCode !== 201) {
+        alert("Cann't save movie!");
+      } else {
+        alert("Movie successfuly added!");
+        this.setState({
+          redirect: true
+        });
+      }
     })
     .catch(error => {
-      alert("Error");
+      alert("Server is no available");
     });
   }
 

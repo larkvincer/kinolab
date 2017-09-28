@@ -14,12 +14,20 @@ exports.listMovies = (req, resp) => {
 };
 
 exports.addMovie = (req, resp) => {
-  const newMovie = new Movie(req.body);
+  let newMovie;
+  try {
+    newMovie = new Movie(req.body);
+  } catch(err) {
+    resp.statusCode = 500;
+    resp.json({
+      error: err.name
+    });
+  }
+
   newMovie.save((err) => {
     if (err) {
-      console.log(err);
       resp.statusCode = 500;
-      resp.json({
+      return resp.json({
         error: err.message
       });
     }
@@ -32,12 +40,11 @@ exports.addMovie = (req, resp) => {
 };
 
 exports.deleteMovieById = (req, resp) => {
-  console.log(req.body);
   Movie.findOneAndRemove({_id: req.params.id},
   (err) => {
     if (err) {
       resp.statusCode = 500;
-      resp.json({
+      return resp.json({
         error: err.message
       });
     }
@@ -53,7 +60,7 @@ exports.getMovieByTitle = (req, resp) => {
   (error, movies) => {
     if (error) {
       resp.statusCode = 500;
-      resp.json({
+      return resp.json({
         error: error.message
       });
     }
@@ -67,7 +74,7 @@ exports.getMovieByActor = (req, resp) => {
   (error, movies) => {
     if (error) {
       resp.statusCode = 500;
-      resp.json({
+      return resp.json({
         error: error.message
       });
     }
@@ -81,7 +88,7 @@ exports.getMovieById = (req, resp) => {
   (error, movie) => {
     if (error) {
       resp.statusCode = 500;
-      resp.json({
+      return resp.json({
         error: error.message
       });
     }
