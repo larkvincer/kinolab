@@ -12,6 +12,9 @@ export default class Header extends Component {
         <Link to="/movie/add">
           <button>Add movie</button>
         </Link>
+        <Link to="/movie/import">
+          <button>Import movies</button>
+        </Link>
         <hr/>
       </header>
     );
