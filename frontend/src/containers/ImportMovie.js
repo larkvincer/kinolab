@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { Redirect } from "react-router-dom";
 import ImportMovieForm from "../components/ImportMovieForm";
 
 export default class ImportMovie extends Component {
@@ -17,16 +18,17 @@ export default class ImportMovie extends Component {
       reader.onload = (event) => {
         const jsonFile = parseMovies(event.target.result);
         Promise.all(
-          jsonFile.map(el => {
+          jsonFile.map(el =>
             fetch("http://localhost:8080/movie", {
               method: 'post',
               headers: {
                 "Content-type": "application/json"
               },
               body: JSON.stringify(el)
-            });
-          })
+            })
+          )
         ).then(() => {
+          alert("Movies was imported successfuly!!");
           this.setState({
             redirect: true
           });
@@ -51,6 +53,9 @@ export default class ImportMovie extends Component {
   }
 
   render() {
+    if (this.state.redirect) {
+      return <Redirect to="/" />
+    }
     return (
       <ImportMovieForm
         onFormSubmit={(event) => {this.handleSubmit(event)}}
@@ -65,7 +70,7 @@ const parseMovies = (text) => {
   text
   .split(/\n/).filter(item => item !== "")
   .reduce((accum, item) => {
-    const splittedLine = item.match(/^([\w\s]+)\:\s([\w\s,]+)/);
+    const splittedLine = item.match(/^([\w\s]+):\s([\w\s,-]+)/);
     const name = splittedLine[1];
     const value = splittedLine[2];
     if (name === "Stars") {

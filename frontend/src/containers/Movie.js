@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import { Redirect } from 'react-router-dom';
-
+import VisibleMovie from "../components/VisibleMovie";
 
 export default class Movie extends Component {
   constructor() {
@@ -19,7 +19,6 @@ export default class Movie extends Component {
   }
 
   handleDelete() {
-    console.log(this.state.movie.id);
     fetch(`http://localhost:8080/movie/${this.state.movie._id}`,
     {method: "delete"})
     .then((response) => response.json())
@@ -40,16 +39,10 @@ export default class Movie extends Component {
     if(movie) {
       let uniqueId = 0;
       return (
-        <article key={movie._id}>
-          <button onClick={() => {this.handleDelete()}}>Delete</button>
-          <img src="http://via.placeholder.com/300x500" alt={movie.title} />
-          <h2>{movie.title}</h2>
-          <div><strong>Realease year:</strong> {movie.release_year}</div>
-          <div><strong>Format:</strong> {movie.format}</div>
-          <div><strong>Actors:</strong> {
-            movie.actors.map(actor => (<span key={uniqueId++}>{actor} </span>))
-          }</div>
-        </article>
+        <VisibleMovie
+          {...movie}
+          onDelete={() => {this.handleDelete()}}
+        />
       );
     } else {
       return (

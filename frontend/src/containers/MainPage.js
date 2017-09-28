@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import SearchBar from './SearchBar';
-import MovieList from './MovieList';
+import SearchBar from '../components/SearchBar';
+import MovieList from '../components/MovieList';
 
 export default class MainPage extends Component {
   constructor() {

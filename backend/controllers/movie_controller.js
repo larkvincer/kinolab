@@ -14,10 +14,10 @@ exports.listMovies = (req, resp) => {
 };
 
 exports.addMovie = (req, resp) => {
-  console.log(req.body);
   const newMovie = new Movie(req.body);
   newMovie.save((err) => {
     if (err) {
+      console.log(err);
       resp.statusCode = 500;
       resp.json({
         error: err.message
