@@ -17,12 +17,15 @@ export default class SearchBar extends Component {
 
   render() {
     return (
-      <form onSubmit={(event) => {this.handleFormSubmit(event)}}>
-        <input type="text" name="searchWord" required="true" placeholder="Search" />
-        <input type="submit" value="Search" /><br/>
-        <input type="radio" name="searchFilter" value="title" defaultChecked={true}/>by title<br/>
-        <input type="radio" name="searchFilter" value="actor"/>by actor<br/>
-      </form>
+      <div>
+        <form onSubmit={(event) => {this.handleFormSubmit(event)}}>
+          <input type="text" name="searchWord" required="true" placeholder="Search" />
+          <input type="submit" value="Search" /><br/>
+          <input type="radio" name="searchFilter" value="title" defaultChecked={true}/>by title<br/>
+          <input type="radio" name="searchFilter" value="actor"/>by actor<br/>
+        </form>
+        <button onClick={this.props.onSorting}>Sort by title</button>
+      </div>
     );
   }
 }

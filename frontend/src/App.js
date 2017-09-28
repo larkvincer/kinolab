@@ -3,6 +3,7 @@ import Header from './components/Header';
 import MainPage from './components/MainPage';
 import AddMovie from './components/AddMovie';
 import Movie from './components/Movie.js';
+import ImportMovie from './components/ImportMovie';
 import {
   BrowserRouter as Router,
   Route,
@@ -17,7 +18,8 @@ class App extends Component {
         <div>
           <Header />
           <Switch>
-            <Route path="/movie/add" component={AddMovie}/>
+            <Route exact path="/movie/add" component={AddMovie}/>
+            <Route exact path="/movie/import" component={ImportMovie}/>
             <Route path="/movie/id/:id" component={Movie} />
             <Route path="/" component={MainPage} />
             <Route render={ () => (<div>Not found!!!</div>)} />
