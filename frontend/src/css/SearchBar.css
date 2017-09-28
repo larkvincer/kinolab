@@ -1,0 +1,13 @@
+.SearchBar {
+  width: 300px;
+  margin: 30px auto;
+}
+
+.SearchBar input[type=text] {
+  height: 35px;
+  width: 237px;
+}
+
+.SearchBar input[type=submit] {
+  height: 41px;
+}

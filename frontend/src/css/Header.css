@@ -1,13 +1,28 @@
 .Header {
   background-color: black;
+  padding: 10px;
+  padding-left: 300px;
+  padding-right: 300px;
+  overflow: auto;
 }
 
 .Header__logo {
   color: white;
   margin: 0;
   text-decoration: none;
+  float: left;
 }
 
 .margin_zero {
   margin: 0!important;
+}
+
+.add-button {
+  float: right;
+  background: none;
+  border: 2px solid white;
+  color: #fff;
+  height: 36px;
+  margin-right: 20px;
+  cursor: pointer;
 }

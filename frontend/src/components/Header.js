@@ -8,10 +8,10 @@ const Header = () => (
       <h1 className="margin_zero">Kinolab</h1>
     </Link>
     <Link to="/movie/add">
-      <button>Add movie</button>
+      <button className="add-button">Add movie</button>
     </Link>
-    <Link to="/movie/import">
-      <button>Import movies</button>
+    <Link to="/movie/import" >
+      <button className="add-button">Import movies</button>
     </Link>
   </header>
 );

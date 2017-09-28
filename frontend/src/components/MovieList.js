@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import MoviePlaceholder from "./MoviePlaceholder";
+import "../css/MovieList.css";
 
 export default class MovieList extends Component {
   componentDidMount() {
@@ -10,13 +11,13 @@ export default class MovieList extends Component {
 
   render() {
     return (
-      <section>
+      <div className="MovieList">
           {
             this.props.movies.map(el => {
               return <MoviePlaceholder key={el._id} {...el} />;
             })
           }
-      </section>
+      </div>
     );
   }
 }

@@ -1,0 +1,8 @@
+.ImportMovieForm {
+  width: 300px;
+  margin: 50px auto;
+}
+
+.ImportMovieForm input {
+  margin: 10px;
+}

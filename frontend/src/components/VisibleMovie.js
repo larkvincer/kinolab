@@ -1,4 +1,5 @@
 import React from "react"
+import "../css/VisibleMovie.css";
 
 const VisibleMovie = ({
   onDelete,
@@ -10,15 +11,20 @@ const VisibleMovie = ({
 }) => {
   let uniqueId = 0;
   return (
-    <article key={_id}>
-      <button onClick={onDelete}>Delete</button>
-      <img src="http://via.placeholder.com/300x500" alt={title} />
-      <h2>{title}</h2>
-      <div><strong>Realease year:</strong> {release_year}</div>
-      <div><strong>Format:</strong> {format}</div>
-      <div>
-        <strong>Actors:</strong>
-        { actors.map(actor => (<span key={uniqueId++}>{actor} </span>)) }
+    <article className="VisibleMovie" key={_id}>
+      <img src="http://via.placeholder.com/300x400"
+        className="image"
+        alt={title}
+      />
+      <div className="description">
+        <h2>{title}</h2>
+        <div><strong>Realease year:</strong> {release_year}</div>
+        <div><strong>Format:</strong> {format}</div>
+        <div>
+          <strong>Actors:</strong>
+          { actors.map(actor => (<span key={uniqueId++}>{actor} </span>)) }
+        </div>
+        <button onClick={onDelete}>Delete</button>
       </div>
     </article>
   );

@@ -1,0 +1,13 @@
+.VisibleMovie {
+  width: 750px;
+  margin: 50px auto;
+  overflow: auto;
+}
+
+.image {
+  float: left;
+}
+
+.description {
+  float: right;
+}
